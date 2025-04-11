@@ -18,7 +18,7 @@ public class DemoApiApplication {
 
         ResponseEntity<String> response = restTemplate.getForEntity(BASE_URL, String.class);
         String session = response.getHeaders().getFirst(HttpHeaders.SET_COOKIE);
-        System.out.println("Полученный session coockie: " + session);
+        System.out.println("Полученный session cookie: " + session);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cookie", session);
@@ -30,7 +30,7 @@ public class DemoApiApplication {
         String part1 = postResponse.getBody();
         System.out.println("Ответ на POST запрос: " + part1);
 
-        String put = "{ \"id\": 3, \"name\": \"James\", \"lastName\": \"Brown\", \"age\": 30 }";
+        String put = "{ \"id\": 3, \"name\": \"Thomas\", \"lastName\": \"Shelby\", \"age\": 30 }";
         HttpEntity<String> putRequest = new HttpEntity<>(put, headers);
         ResponseEntity<String> putResponse = restTemplate.exchange(BASE_URL, HttpMethod.PUT, putRequest, String.class);
         String part2 = putResponse.getBody();
